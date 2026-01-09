@@ -1,38 +1,350 @@
-.App {
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+html,
+body,
+#root,
+.app,
+.content{
+  font-family: "Nunito Sans", sans-serif;
+}
+::-webkit-scrollbar{
+  width: 10px;
+  color: black;
+}
+::-webkit-scrollbar-track{
+  background: #e0e0e0;
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb{
+  background-color: 	#6082B6;
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background-color: #b3b3b3;
+  border-radius: 7px;
+}
+
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chatbot {
+  width: 300px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
+  height: 40px;
+}
+
+.chatbot.open {
+  height: 400px;
+}
+
+.chatbot-header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chatbot-body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.chatbot-messages {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
+.chatbot-message {
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 10px;
+}
+
+.chatbot-message.user {
+  background-color: #007bff;
+  color: #fff;
+  text-align: right;
+}
+
+.chatbot-message.bot {
+  background-color: #e0e0e0;
+  text-align: left;
+}
+
+.chatbot-input {
+  display: flex;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+}
+
+.chatbot-input button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.chatbot-input button:hover {
+  background-color: #0056b3;
+}
+/* General Form Styling */
+.container {
+  margin-top: 50px;
+}
+
+.booking-form {
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+.booking-form .form-group {
+  margin-bottom: 20px;
+}
+
+.booking-form label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+.booking-form .form-control {
+  background-color: #f0efef;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.booking-form .form-control:focus {
+  background-color: #fffbea;
+  border-color: #f9c74f;
+  outline: none;
+}
+
+.booking-form .btn-warning {
+  background-color: #f9c74f;
+  border-color: #f9c74f;
+  color: #212529;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.booking-form .btn-warning:hover {
+  background-color: #f08a5d;
+  border-color: #f08a5d;
+}
+/* Styling for the input container */
+.input-container {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.mapbox-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:  20px;
+
+ 
+}
+
+.input-fields {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.geocoder-box {
+  width: 48%;
+  position: relative;
+}
+
+/* Geocoder Input Field Styles */
+.geocoder-box .mapboxgl-ctrl-geocoder {
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  background-color: #f0f0f0; /* Light grey background */
+  border: none; /* Remove border */
+  padding: 10px; /* Add padding */
+  font-weight: bold; /* Slightly bold placeholder text */
+  border-radius: 0; /* Remove border radius */
+  box-shadow: none; /* Remove box shadow */
+}
+
+.mapboxgl-ctrl-geocoder--input:focus {
+  outline: none; /* Remove default outline */
+  border: 1px solid orange; /* Orange border on focus */
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  display: none; /* Hide the search icon */
+}
+
+/* Suggestion List Styles */
+.mapboxgl-ctrl-geocoder .suggestions {
+  box-shadow: none; /* Remove box shadow from suggestions */
+  border-radius: 0; /* Remove border radius from suggestions */
+  background-color: #fff; /* Set background color of suggestions */
+}
+
+.mapboxgl-ctrl-geocoder .suggestion-item {
+  padding: 10px; /* Add padding to suggestion items */
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.mapboxgl-ctrl-geocoder .suggestion-item:hover {
+  background-color: #f5f5f5; /* Change background color on hover */
+}
+
+.map-container {
+  width: 100%;
+  height: 500px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.info-box {
+  text-align: center;
+  padding: 10px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.mapboxgl-ctrl-logo, .mapboxgl-ctrl-attrib {
+  display: none !important; /* Hide the Mapbox attribution and logo */
+}
+.mapboxgl-ctrl-geocoder, .mapboxgl-ctrl-geocoder .suggestions {
+  box-shadow: none!important;
+}
+
+.heading-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Login.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.login-container {
+  display: flex;
   min-height: 100vh;
+  background-color: #f0f0f0; /* Light background color for the whole page */
+}
+
+.login-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #fff; /* White background for form */
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.login-form-container h2 {
+  margin-bottom: 1rem;
+  color: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-form-container input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
+
+.login-form-container button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-form-container button:hover {
+  background-color: #0056b3;
+}
+
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading-container h1 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.heading-container img {
+  max-width: 80%;
+  height: auto;
+}
+

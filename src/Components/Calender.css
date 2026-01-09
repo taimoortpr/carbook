@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- 1. Prominent Container and Base Styles --- */
+.datepicker-container {
+    font-family: 'Poppins', sans-serif;
+    /* Adding a noticeable margin/padding around the entire component */
+    padding: 20px; 
+    border-radius: 12px;
+    /* Prominent shadow for depth */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    background-color: #ffffff;
+    display: inline-block;
+}
+
+.react-datepicker {
+    font-family: 'Poppins', sans-serif;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* --- 2. Larger Header and Navigation --- */
+.react-datepicker__header {
+    background: transparent !important;
+    border-bottom: none !important;
+    padding: 15px 10px 10px !important;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-year-header {
+    font-size: 1.5rem !important; /* Larger month title */
+    font-weight: 700;
+    color: #333333 !important;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+/* Navigation Arrows */
+.react-datepicker__navigation {
+    top: 20px !important;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.react-datepicker__navigation:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+/* Day Names (S, M, T...) */
+.react-datepicker__day-names {
+    margin-bottom: 5px;
+    /* Increased spacing for a cleaner look */
+    padding: 0 8px; 
+}
+
+.react-datepicker__day-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6c757d !important;
+    line-height: 25px !important;
+    width: 2.5rem !important; /* Wider columns */
+    margin: 0 !important;
+}
+
+/* --- 3. Day Cell Styling (Larger, Animated, & States) --- */
+.react-datepicker__week {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.react-datepicker__day {
+    /* Increased size */
+    width: 2.5rem !important; 
+    height: 2.5rem !important;
+    line-height: 2.5rem !important;
+    margin: 3px !important;
+    border-radius: 50% !important; /* Perfect circle */
+    font-weight: 400;
+    color: #495057;
+    cursor: pointer;
+    background-color: transparent;
+    /* Smooth Transitions for Hover/Selection */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover Effect (Animated) */
+.react-datepicker__day:hover {
+    background-color: #e9ecef !important;
+    color: #007bff !important;
+    transform: scale(1.05); /* Slight grow on hover */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Today's Date (Prominent Ring) */
+.react-datepicker__day--today {
+    border: 2px solid #007bff !important; /* Primary color ring */
+    font-weight: 700;
+    background-color: transparent !important;
+}
+.react-datepicker__day--today:hover {
+    background-color: #e9ecef !important;
+    color: #007bff !important;
+}
+
+/* Selected Date / Range State (Using a Blue/Teal Accent) */
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range,
+.react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range) {
+    background-color: #1ab495 !important; /* Your signature Teal/Green */
+    color: white !important;
+    transform: scale(1.05);
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(26, 180, 149, 0.4);
+}
+
+/* Disabled Dates (Subtle and Grayed Out) */
+.react-datepicker__day--disabled {
+    color: #cccccc !important;
+    pointer-events: none;
+    background-color: transparent !important;
+    opacity: 0.6;
+    transform: none; /* No animation for disabled dates */
+    cursor: default;
+}
+.react-datepicker__day--disabled:hover {
+    background-color: transparent !important;
+}
+
+/* Remove unused/unwanted styling elements */
+.react-datepicker__close-icon::after,
+svg.react-datepicker__triangle {
+    display: none;
+}
+
+/* Clean up hover on navigation buttons */
+span.react-datepicker__navigation-icon:hover {
+    background: none !important;
+}
